@@ -1,9 +1,8 @@
 from services.services import *
-from students.students import *
+from students.student import *
 
 
 try:
-    # create_students()
     create_students_from_file()
 
     highest_student = highest_level_students(students_dict)

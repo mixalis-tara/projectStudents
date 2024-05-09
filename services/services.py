@@ -1,24 +1,27 @@
-from students.students import Students
+from students.student import Student
 
 students_dict = {}
 
 def create_students_from_file():
-    with open("Student.txt") as infile:
-        for line in infile:
-            listfields = line.strip().split()
-            if len(listfields) == 4:
-                f, l, a, le = listfields
+    try:
+        with open("Student.txt", encoding="utf-8") as infile:
+            for line in infile:
+                listfields = line.strip().split()
+                if len(listfields) == 4:
+                    f, l, a, le = listfields
 
-                a = int(a)
-                le = int(le)
+                    a = int(a)
+                    le = int(le)
 
-                student = Students(f, l, a, le)
+                    student = Student(f, l, a, le)
 
-                key = f"{f}_{l}"
-                students_dict[key] = student
-            else:
-                print(f"Ignoring line: {line.strip()}")
-    return students_dict
+                    key = f"{f}_{l}"
+                    students_dict[key] = student
+                else:
+                    print(f"Ignoring line: {line.strip()}")
+        return students_dict
+    except FileNotFoundError:
+        print("File not found or cannot be opened.")
 
 
 def display_students(students_dict):
