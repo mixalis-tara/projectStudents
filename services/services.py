@@ -1,39 +1,73 @@
 from students.students import Students
 
-f_name = ["Giannis", "Maria", "Kwstas", "Eleni", "Nikos", "Antwnhs", "Aggelikh", "Dimitris"]
-l_name = ["Papadopoulos", "Karagianni", "Dhmitrioy", "Papanikolaou", "Andreou", "Mixahlidis", "Papadaki", "Kontogiannis"]
-age = [15, 16, 14, 15, 17, 15, 14, 16]
-level = [2, 3, 1, 2, 3, 2, 1, 3]
+students_dict = {}
 
-objs = list()
+def create_students_from_file():
+    with open("Student.txt") as infile:
+        for line in infile:
+            listfields = line.strip().split()
+            if len(listfields) == 4:
+                f, l, a, le = listfields
 
-def create_students():
+                a = int(a)
+                le = int(le)
 
-    for f, l, a, le in zip(f_name, l_name, age, level):
-        student = Students(f, l, a, le)
-        objs.append(student)
-def display_students(objs):
-    display_all_students = [(f"Onomateponimo: {obj.f_name} {obj.l_name}\nHlikia: {obj.age}\nEpipedo: {obj.level}\n")for obj in objs]
+                student = Students(f, l, a, le)
+
+                key = f"{f}_{l}"
+                students_dict[key] = student
+            else:
+                print(f"Ignoring line: {line.strip()}")
+    return students_dict
+
+
+def display_students(students_dict):
+    display_all_students = []
+    for key, student in students_dict.items():
+        display_all_students.append(
+            f"Onomateponimo: {student.f_name} {student.l_name}\nHlikia: {student.age}\nEpipedo: {student.level}\n"
+        )
     return display_all_students
 
-def average_age(age):
-    return sum(age) / len(age)
+def average_age(students_dict):
+    ages = [student.age for student in students_dict.values()]
 
-def highest_level_students(objs, level):
+    if ages:
+        avg_age = sum(ages) / len(ages)
+        return avg_age
+    else:
+        return 0
+
+#
+def highest_level_students(students_dict):
+    level = [student.level for student in students_dict.values()]
+    display_highest_level_students = []
     highest = max(level)
-    highest_students = [(f"Mathitis: {obj.f_name} {obj.l_name}") for obj in objs if obj.level == highest]
-    return highest_students
-
-def highest_lvl(level):
+    for key, student in students_dict.items():
+        if student.level == highest:
+            display_highest_level_students.append (
+                f"Mathitis: {student.f_name} {student.l_name}"
+            )
+    return display_highest_level_students
+#
+def highest_lvl(students_dict):
+    level = [student.level for student in students_dict.values()]
     highest = max(level)
     return highest
-
-def smallest_level_students(objs, level):
+#
+def smallest_level_students(students_dict):
+    level = [student.level for student in students_dict.values()]
+    display_smallest_level_students = []
     smallest = min(level)
-    smallest_students = [(f"Mathitis: {obj.f_name} {obj.l_name}") for obj in objs if obj.level == smallest]
-    return smallest_students
-
-def smallest_lvl(level):
+    for key, student in students_dict.items():
+        if student.level == smallest:
+            display_smallest_level_students.append(
+                f"Mathitis: {student.f_name} {student.l_name}"
+            )
+    return display_smallest_level_students
+#
+def smallest_lvl(students_dict):
+    level = [student.level for student in students_dict.values()]
     smallest = min(level)
     return smallest
 
