@@ -1,29 +1,36 @@
-# Gaming Quiz
+# Students Information Management System
 
-This is a Python quiz game about gaming trivia.
+StudentInfoApp is a Python program designed to manage and browse a collection of student information. It allows users to view a list of students, add new students to the collection, view student details, calculate statistics, and more.
 
-## Features
+## Features:
 
-- Multiple-choice questions about popular video games
-- Scoring system to track users' performance
-- Easy-to-use interface
+    View Students: Browse through a list of students in the collection.
+    Add New Students: Easily add new students to the collection with details such as first name, last name, age, and level.
+    View Student Details: View detailed information about a specific student, including first name, last name, age, and level.
+    Calculate Statistics: Calculate statistics such as the average age of students and identify students with the highest and lowest levels.
 
-## How to Use
+## Technologies Used:
 
-1. Clone the repository.
-2. Run `main.py`.
-3. Answer the questions and see your score at the end.
+    Python: Programming language used for building the application.
+    File Handling: Mechanism for reading student information from a text file.
+    Dictionary: Data structure used for storing and managing student information.
+    Try-Except: Error handling mechanism to handle file-related errors gracefully.
 
-## Usage
+## How to Run:
 
-1. Open a terminal or command prompt.
-2. Navigate to the repository folder.
-3. Run `main.py`.
-4. Answer the questions by entering A, B, C, or D.
-5. View your score at the end of the quiz.
+    Clone the repository to your local machine.
 
-## Files
+    Navigate to the project directory.
 
-- `main.py`: Contains the main logic for the quiz game.
-- `services.py`: Contains functions for managing questions.
-- `question.py`: Defines the Question class.
+    Run the Python program using the following command:
+
+    python main.py
+
+    Follow the on-screen instructions to interact with the program.
+
+## File Structure:
+
+    main.py: The main Python script to run the program.
+    services/services.py: Contains functions for managing student information.
+    students/students.py: Defines the Student class.
+    Student.txt: Input file containing student information (first name, last name, age, and level).
